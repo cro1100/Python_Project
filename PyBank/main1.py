@@ -29,19 +29,19 @@ total_profit_loss = 0
 # open the csv and store to a list
 with open(bankpath) as bankdata:
     budget_reader = csv.reader(bankdata, delimiter = ',')
-    print(type(budget_reader))
-    #budget_reader.next()
-    budget_list = list(budget_reader)
+    headers = reader.next()
+#Need to not go this route with turning it into a list.  Instead use the class type and use the loop to count through everything. Go back to the original while loop idea with the break at the empty row    
+ #   budget_list = list(budget_reader)
 
 # find number of rows in the list for the number of months, subtract 1 to eliminate header   
-    total_months = len(budget_list) - 1
+ #   total_months = len(budget_list) - 1
  #   best_month_index = index(max(total_months))
    # print(best_month_index)
 
 # for loop for the sum, avg, and index location of max and min
-    for row in range(2, total_months):
-        total_profit_loss += int(budget_list[row][1])
-        profit_change = budget_list[row][1]
+    for row in budget_reader:
+        total_profit_loss += row[1]
+        
                 
 print(total_profit_loss)
 print(total_months)
