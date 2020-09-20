@@ -41,11 +41,12 @@ with open(bankpath) as bankdata:
     for row in range(2, total_months):
         total_profit_loss += int(budget_list[row][1])
  
-# for loop to find the changes in profits.  prob
+# for loop to find the changes in profits. 
     for row in range(4, total_months):
         i += 1
         profit_change_prev = int(budget_list[row-1][1]) - int(budget_list[row-2][1])
         profit_change_current = int(budget_list[row][1]) - int(budget_list[row-1][1])
+     #now test if the profits are greater or lower. Change the variables of the amount and location as needed
         if profit_change_current < profit_change_low:
             profit_change_low = profit_change_current
             low_location = i
@@ -53,26 +54,30 @@ with open(bankpath) as bankdata:
             profit_change_high = profit_change_current
             high_location = i
                 
+#create the variabls for the avg loss
 avg_profit_loss = int(total_profit_loss / total_months)
 
+#print results to the screen
 print('Financial Analysis')
 print('------------------------')
 print(f'Total Months: {total_months}')
 print(f'Total: ${total_profit_loss}')
 print(f'Average Change: ${avg_profit_loss}')
-print(low_location)
-print(profit_change_low)
-print(high_location)
-print(profit_change_high)
-# Output looks like:
-# Financial Analysis
-# ----------------------------
-# Total Months: 86
-# Total: $38382578
-# Average  Change: $-2315.12
-# Greatest Increase in Profits: Feb-2012 ($1926159)
-# Greatest Decrease in Profits: Sep-2013 ($-2196167)
+print(f'Greatest Increase in Profits: {budget_list[high_location][0]} ${profit_change_high}')
+print(f'Greatest Increase in Profits: {budget_list[low_location][0]} ${profit_change_low}')
 
-# create a list comprehension
+#create the csv file, starting with concatenating the results
+output_results = [total_months, total_profit_loss, avg_profit_loss, budget_list[high_location][0], profit_change_high, budget_list[low_location][0],profit_change_low]
+print(output_results)
+output_file = os.path.join('PyBank_result.csv')
+
+# open the output file, create a header row, and then write the zipped object to the csv
+with open(output_file, "w") as datafile:
+    writer = csv.writer(datafile)
+
+    writer.writerow(["Total_Months", "Total", "Average_Change","Greatest Increase in Profits month","Greatest Increase in Profits amount",
+                    "Greatest Decrease in Profits month", "Greatest Decrease in Profits amount"])  
+
+    writer.writerow(output_results)
     
     
