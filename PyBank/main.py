@@ -21,7 +21,6 @@
 # Import modules needed, OS and CSV
 import os
 import csv
-import itertools
 
 # create the path name to access the bank data in a csv file and use it
 bankpath = os.path.join( 'Resources', 'budget_data.csv')
@@ -31,8 +30,8 @@ profit_change_high = 0
 i = 4
 
 # open the csv and store to a list
-with open(bankpath) as bankdata:
-    budget_reader = csv.reader(bankdata, delimiter = ',')
+#with open(bankpath) as bankdata:
+    #budget_reader = csv.reader(bankdata, delimiter = ',')
     budget_list = list(budget_reader)
 
 # find number of rows in the list for the number of months, subtract 1 to eliminate header   
