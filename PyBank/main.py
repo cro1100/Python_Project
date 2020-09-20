@@ -30,8 +30,8 @@ profit_change_high = 0
 i = 4
 
 # open the csv and store to a list
-#with open(bankpath) as bankdata:
-    #budget_reader = csv.reader(bankdata, delimiter = ',')
+with open(bankpath) as bankdata:
+    budget_reader = csv.reader(bankdata, delimiter = ',')
     budget_list = list(budget_reader)
 
 # find number of rows in the list for the number of months, subtract 1 to eliminate header   
@@ -53,13 +53,25 @@ i = 4
             profit_change_high = profit_change_current
             high_location = i
                 
-print(total_months)
-print(total_profit_loss)
+avg_profit_loss = int(total_profit_loss / total_months)
+
+print('Financial Analysis')
+print('------------------------')
+print(f'Total Months: {total_months}')
+print(f'Total: ${total_profit_loss}')
+print(f'Average Change: ${avg_profit_loss}')
 print(low_location)
 print(profit_change_low)
 print(high_location)
 print(profit_change_high)
-
+# Output looks like:
+# Financial Analysis
+# ----------------------------
+# Total Months: 86
+# Total: $38382578
+# Average  Change: $-2315.12
+# Greatest Increase in Profits: Feb-2012 ($1926159)
+# Greatest Decrease in Profits: Sep-2013 ($-2196167)
 
 # create a list comprehension
     
