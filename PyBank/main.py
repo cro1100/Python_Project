@@ -68,7 +68,6 @@ print(f'Greatest Increase in Profits: {budget_list[low_location][0]} ${profit_ch
 
 #create the csv file, starting with concatenating the results
 output_results = [total_months, total_profit_loss, avg_profit_loss, budget_list[high_location][0], profit_change_high, budget_list[low_location][0],profit_change_low]
-print(output_results)
 output_file = os.path.join('PyBank_result.csv')
 
 # open the output file, create a header row, and then write the zipped object to the csv
