@@ -44,7 +44,8 @@
 # Winner: Khan
 
 # With this I would like to create list comprehensions rather than just doing for loopsl
-# The inner loop comprehension will be the shortened list of the candidates and the number of 
+# Unfortunately, the for loops became more complicated for my taste and i did no create comprehensions
+# The inner loop will be the shortened list of the candidates and the number of 
 # votes which they have gained.  It's essentially a pivot table.
 # The outer loop will be a for loop which runs through the entire list itself to step through 
 # each row to pass the data on to the list comprehension.
